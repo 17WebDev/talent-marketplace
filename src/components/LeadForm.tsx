@@ -18,10 +18,13 @@ const LeadForm: React.FC<LeadFormProps> = ({ onSubmit, onClose }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!import.meta.env.VITE_ZAPIER_WEBHOOK_URL) return;
+
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('YOUR_ZAPIER_WEBHOOK_URL', {
+      const response = await fetch(import.meta.env.VITE_ZAPIER_WEBHOOK_URL, {
         method: 'POST',
         body: JSON.stringify(formData),
         headers: {
@@ -52,6 +55,7 @@ const LeadForm: React.FC<LeadFormProps> = ({ onSubmit, onClose }) => {
                 setFormData({ ...formData, firstName: e.target.value })
               }
               label='First Name'
+              name='firstName'
               required
             />
             <Input
@@ -60,6 +64,7 @@ const LeadForm: React.FC<LeadFormProps> = ({ onSubmit, onClose }) => {
                 setFormData({ ...formData, lastName: e.target.value })
               }
               label='Last Name'
+              name='lastName'
               required
             />
           </div>
@@ -70,6 +75,7 @@ const LeadForm: React.FC<LeadFormProps> = ({ onSubmit, onClose }) => {
             }
             label='Email'
             type='email'
+            name='email'
             required
           />
           <Input
@@ -79,6 +85,7 @@ const LeadForm: React.FC<LeadFormProps> = ({ onSubmit, onClose }) => {
             }
             label='LinkedIn URL'
             type='url'
+            name='linkedinUrl'
             required
           />
           <Input
@@ -88,6 +95,7 @@ const LeadForm: React.FC<LeadFormProps> = ({ onSubmit, onClose }) => {
             }
             label='Company URL'
             type='url'
+            name='companyUrl'
             required
           />
           <div className='flex gap-4 mt-6'>
