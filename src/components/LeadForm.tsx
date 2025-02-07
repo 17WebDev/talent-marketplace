@@ -27,9 +27,6 @@ const LeadForm: React.FC<LeadFormProps> = ({ onSubmit, onClose }) => {
       const response = await fetch(import.meta.env.VITE_ZAPIER_WEBHOOK_URL, {
         method: 'POST',
         body: JSON.stringify(formData),
-        headers: {
-          'Content-Type': 'application/json',
-        },
       });
 
       if (response.ok) {
