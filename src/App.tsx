@@ -59,7 +59,7 @@ function App() {
           <div className='flex justify-between h-16'>
             <div className='flex items-center'>
               <span className='text-indigo-600 text-xl font-bold'>
-                TalentAI
+                OST Integrated Roles
               </span>
             </div>
             <div className='flex items-center space-x-4'>
