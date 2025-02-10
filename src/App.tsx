@@ -66,8 +66,11 @@ function App() {
               {/* <button className='text-gray-600 hover:text-gray-900'>
                 Sign In
               </button> */}
-              <button className='bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700'>
-                Get Started
+              <button
+                onClick={() => setShowForm(true)}
+                className='bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700'
+              >
+                Explore Talent Pool
               </button>
             </div>
           </div>
@@ -79,14 +82,10 @@ function App() {
         <h1 className='text-4xl font-bold text-gray-900 mb-4'>
           Find Elite Engineering Talent with AI-Powered Matching
         </h1>
-        <p className='text-xl text-gray-600 mb-8'>
+        <p className='text-xl text-gray-600'>
           Connect with pre-vetted engineers, developers, and tech leaders who
           match your exact requirements.
         </p>
-        <button className='bg-indigo-600 text-white px-6 py-3 rounded-md text-lg hover:bg-indigo-700'>
-          Explore Talent Pool
-        </button>
-
         {/* Stats */}
         <div className='grid grid-cols-3 gap-8 mt-16 max-w-3xl mx-auto'>
           <div>
@@ -124,7 +123,7 @@ function App() {
               onClick={() => setShowForm(true)}
               className='bg-indigo-600 text-white px-6 py-3 rounded-md text-lg hover:bg-indigo-700 z-10'
             >
-              View Candidates
+              Explore Talent Pool
             </button>
           </div>
         )}
