@@ -4,6 +4,7 @@ import FilterSidebar from './components/FilterSidebar';
 import LeadForm from './components/LeadForm';
 import { Engineer } from './types';
 import Header from './components/Header';
+import HeroSection from './components/HeroSection';
 
 const engineers: Engineer[] = [
   {
@@ -55,32 +56,7 @@ export default function App() {
   return (
     <div className='min-h-screen bg-gray-50'>
       <Header setShowForm={setShowForm} />
-      {/* Hero Section */}
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center'>
-        <h1 className='text-4xl font-bold text-gray-900 mb-4'>
-          Find Elite Engineering Talent with AI-Powered Matching
-        </h1>
-        <p className='text-xl text-gray-600'>
-          Connect with pre-vetted engineers, developers, and tech leaders who
-          match your exact requirements.
-        </p>
-        {/* Stats */}
-        <div className='grid grid-cols-3 gap-8 mt-16 max-w-3xl mx-auto'>
-          <div>
-            <div className='text-3xl font-bold text-indigo-600'>15k+</div>
-            <div className='text-gray-600'>Vetted Engineers</div>
-          </div>
-          <div>
-            <div className='text-3xl font-bold text-indigo-600'>98%</div>
-            <div className='text-gray-600'>Successful Placements</div>
-          </div>
-          <div>
-            <div className='text-3xl font-bold text-indigo-600'>48h</div>
-            <div className='text-gray-600'>Average Matching Time</div>
-          </div>
-        </div>
-      </div>
-
+      <HeroSection />
       {/* Main Content */}
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative'>
         <div className={`flex gap-8 ${!hasAccess ? 'filter blur-sm' : ''}`}>
