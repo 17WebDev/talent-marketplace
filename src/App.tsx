@@ -3,6 +3,7 @@ import TalentCard from './components/TalentCard';
 import FilterSidebar from './components/FilterSidebar';
 import LeadForm from './components/LeadForm';
 import { Engineer } from './types';
+import Header from './components/Header';
 
 const engineers: Engineer[] = [
   {
@@ -37,7 +38,7 @@ const engineers: Engineer[] = [
   },
 ];
 
-function App() {
+export default function App() {
   const [showForm, setShowForm] = useState(false);
   const [hasAccess, setHasAccess] = useState(false);
 
@@ -53,30 +54,7 @@ function App() {
 
   return (
     <div className='min-h-screen bg-gray-50'>
-      {/* Navigation */}
-      <nav className='bg-white border-b border-gray-200'>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-          <div className='flex justify-between h-16'>
-            <div className='flex items-center'>
-              <span className='text-indigo-600 text-xl font-bold'>
-                OST Integrated Roles
-              </span>
-            </div>
-            <div className='flex items-center space-x-4'>
-              {/* <button className='text-gray-600 hover:text-gray-900'>
-                Sign In
-              </button> */}
-              <button
-                onClick={() => setShowForm(true)}
-                className='bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700'
-              >
-                Explore Talent Pool
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
-
+      <Header setShowForm={setShowForm} />
       {/* Hero Section */}
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center'>
         <h1 className='text-4xl font-bold text-gray-900 mb-4'>
@@ -138,5 +116,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
