@@ -98,7 +98,7 @@ export default function Input({
           onBlur={onBlur as React.FocusEventHandler<HTMLTextAreaElement>}
           required={required}
           ref={inputReference}
-          className={`no-scrollbar relative block max-h-44 w-full resize-none rounded-lg bg-white px-3 py-1.5  outline-none sm:leading-6 ${getDisabledClasses(
+          className={`no-scrollbar relative block max-h-44 w-full border resize-none shadow-sm rounded-lg bg-white px-3 py-1.5  outline-none sm:leading-6 ${getDisabledClasses(
             disabled
           )} ${getValidClasses(valid)}  ${!valid ? 'pr-12' : ''} ${
             inputClassname ?? ''
@@ -152,7 +152,7 @@ export default function Input({
         onBlur={onBlur as React.FocusEventHandler<HTMLInputElement>}
         required={required}
         defaultValue={defaultValue}
-        className={`block w-full rounded-lg bg-white px-3 py-1.5  shadow-sm outline-none sm:leading-6 ${getDisabledClasses(
+        className={`block w-full rounded-lg bg-white px-3 py-1.5 border shadow-sm outline-none sm:leading-6 ${getDisabledClasses(
           disabled
         )} ${getValidClasses(valid)} ${!valid ? 'pr-10' : ''} ${
           inputClassname ?? ''
@@ -183,9 +183,11 @@ export default function Input({
         <p className='mt-1 text-sm text-neutral-500'>{description}</p>
       )}
       <div
-        className={`relative rounded-md shadow-sm ${className} ${
+        className={cn(
+          'relative rounded-md shadow-sm',
+          className,
           (label || description) && 'mt-2'
-        }`}
+        )}
       >
         {type === 'textarea' ? renderTextArea() : renderInput()}
         {!valid && type !== 'password' && (
