@@ -21,7 +21,7 @@ export default function LeadForm({ open, onSubmit, onClose }: LeadFormProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(import.meta.env.VITE_ZAPIER_WEBHOOK_URL);
+
     if (!import.meta.env.VITE_ZAPIER_WEBHOOK_URL) return;
 
     setIsSubmitting(true);
