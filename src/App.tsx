@@ -81,13 +81,11 @@ export default function App() {
             </button>
           </div>
         )}
-
-        {showForm && (
-          <LeadForm
-            onSubmit={handleFormSubmit}
-            onClose={() => setShowForm(false)}
-          />
-        )}
+        <LeadForm
+          open={showForm}
+          onSubmit={handleFormSubmit}
+          onClose={() => setShowForm(false)}
+        />
       </div>
     </div>
   );

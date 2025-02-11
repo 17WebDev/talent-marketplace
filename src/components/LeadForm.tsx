@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import Input from './Input';
+import Modal from './Modal';
+import { DialogPanel } from '@headlessui/react';
 
 interface LeadFormProps {
-  onSubmit: () => void;
+  open: boolean;
   onClose: () => void;
+  onSubmit: () => void;
 }
 
-const LeadForm: React.FC<LeadFormProps> = ({ onSubmit, onClose }) => {
+export default function LeadForm({ open, onSubmit, onClose }: LeadFormProps) {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -42,9 +45,11 @@ const LeadForm: React.FC<LeadFormProps> = ({ onSubmit, onClose }) => {
   };
 
   return (
-    <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50'>
-      <div className='bg-white rounded-lg p-8 max-w-xl w-full'>
-        <h2 className='text-2xl font-bold mb-6'>Access Talent Pool</h2>
+    <Modal open={open} setOpen={onClose}>
+      <DialogPanel className='bg-white rounded-lg p-8 max-w-xl w-full'>
+        <h2 className='text-left text-2xl font-bold mb-6'>
+          Access Talent Pool
+        </h2>
         <form onSubmit={handleSubmit} className='space-y-4'>
           <div className='flex gap-4'>
             <Input
@@ -123,9 +128,7 @@ const LeadForm: React.FC<LeadFormProps> = ({ onSubmit, onClose }) => {
             </button>
           </div>
         </form>
-      </div>
-    </div>
+      </DialogPanel>
+    </Modal>
   );
-};
-
-export default LeadForm;
+}
