@@ -13,6 +13,7 @@ const LeadForm: React.FC<LeadFormProps> = ({ onSubmit, onClose }) => {
     email: '',
     linkedinUrl: '',
     companyUrl: '',
+    additionalNotes: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -94,6 +95,16 @@ const LeadForm: React.FC<LeadFormProps> = ({ onSubmit, onClose }) => {
             type='url'
             name='companyUrl'
             required
+          />
+          <Input
+            value={formData.additionalNotes}
+            onChange={(e) =>
+              setFormData({ ...formData, additionalNotes: e.target.value })
+            }
+            label='Additional Notes'
+            name='additionalNotes'
+            type='textarea'
+            minRows={3}
           />
           <div className='flex gap-4 mt-6'>
             <button
