@@ -1,4 +1,13 @@
-const FilterSidebar = () => {
+import { useState } from 'react';
+import { Role, roles } from '../enums/roles.enum';
+import { techStack, techStackByRole } from '../enums/tech-stack.enum';
+import { cn } from '../helpers/cn';
+
+export default function FilterSidebar() {
+  const [role, setRole] = useState<Role>();
+
+  const filteredTechStack = role ? techStackByRole[role] : techStack;
+
   return (
     <div className={`w-64 flex-shrink-0 block`}>
       <div className='bg-white p-6 rounded-lg shadow-sm'>
@@ -8,19 +17,17 @@ const FilterSidebar = () => {
         <div className='mb-6'>
           <h3 className='text-sm font-medium text-gray-700 mb-2'>Role</h3>
           <div className='space-y-2'>
-            {[
-              'Frontend Engineer',
-              'Backend Engineer',
-              'AI Engineer',
-              'Product Manager',
-              'QA Engineer',
-            ].map((role) => (
-              <label key={role} className='flex items-center'>
+            {roles.map((r) => (
+              <label key={r} className='flex items-center'>
                 <input
                   type='checkbox'
-                  className='rounded border-gray-300 text-indigo-600 focus:ring-indigo-500'
+                  onChange={() => setRole(r)}
+                  className={cn(
+                    'rounded border-gray-300 text-indigo-600 ',
+                    r === role && ' ring-indigo-500'
+                  )}
                 />
-                <span className='ml-2 text-sm text-gray-600'>{role}</span>
+                <span className='ml-2 text-sm text-gray-600'>{r}</span>
               </label>
             ))}
           </div>
@@ -30,7 +37,7 @@ const FilterSidebar = () => {
         <div className='mb-6'>
           <h3 className='text-sm font-medium text-gray-700 mb-2'>Tech Stack</h3>
           <div className='space-y-2'>
-            {['React', 'Node.js', 'Python'].map((tech) => (
+            {filteredTechStack.map((tech) => (
               <label key={tech} className='flex items-center'>
                 <input
                   type='checkbox'
@@ -44,6 +51,4 @@ const FilterSidebar = () => {
       </div>
     </div>
   );
-};
-
-export default FilterSidebar;
+}
