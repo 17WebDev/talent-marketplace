@@ -10,7 +10,7 @@ class AirtableService {
       apiKey: import.meta.env.VITE_AIRTABLE_API_KEY,
     });
     this.talentPoolBase = Airtable.base('appqWN527HNxajNlR');
-    this.talentPoolTableName = 'Developers';
+    this.talentPoolTableName = 'Talent Pool Marketplace';
   }
 
   getAllTalent() {
