@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Role, roles } from '../enums/roles.enum';
 import {
   TechStack,
@@ -7,10 +6,19 @@ import {
 } from '../enums/tech-stack.enum';
 import Checkbox from './inputs/Checkbox';
 
-export default function FilterSidebar() {
-  const [selectedRoles, setSelectedRoles] = useState<Role[]>([]);
-  const [selectedTechStack, setSelectedTechStack] = useState<TechStack[]>([]);
+interface IFilterSidebar {
+  selectedTechStack: TechStack[];
+  setSelectedTechStack: React.Dispatch<React.SetStateAction<TechStack[]>>;
+  selectedRoles: Role[];
+  setSelectedRoles: React.Dispatch<React.SetStateAction<Role[]>>;
+}
 
+export default function FilterSidebar({
+  selectedTechStack,
+  setSelectedTechStack,
+  selectedRoles,
+  setSelectedRoles,
+}: IFilterSidebar) {
   const handleRoleChange = (role: Role) => {
     setSelectedRoles((prev) => {
       if (prev.includes(role)) {

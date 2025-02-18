@@ -8,10 +8,16 @@ import toast from 'react-hot-toast';
 import airtableService from './services/airtable.service';
 import formatTalents from './helpers/formatTalents';
 import { Talent } from './types';
+import { TechStack } from './enums/tech-stack.enum';
+import { Role } from './enums/roles.enum';
+import filterTalents from './helpers/filterTalents';
 
 export default function App() {
   const [showForm, setShowForm] = useState(false);
   const [hasAccess, setHasAccess] = useState(false);
+  const [selectedTechStack, setSelectedTechStack] = useState<TechStack[]>([]);
+  const [selectedRoles, setSelectedRoles] = useState<Role[]>([]);
+
   const [talents, setTalents] = useState<Talent[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -42,6 +48,12 @@ export default function App() {
     setHasAccess(true);
   };
 
+  const filteredTalents = filterTalents(
+    talents,
+    selectedTechStack,
+    selectedRoles
+  );
+
   return (
     <div className='min-h-screen bg-gray-50'>
       <Header setShowForm={setShowForm} />
@@ -49,7 +61,12 @@ export default function App() {
       {/* Main Content */}
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative'>
         <div className={`flex gap-8 ${!hasAccess ? 'filter blur-sm' : ''}`}>
-          <FilterSidebar />
+          <FilterSidebar
+            selectedTechStack={selectedTechStack}
+            setSelectedTechStack={setSelectedTechStack}
+            selectedRoles={selectedRoles}
+            setSelectedRoles={setSelectedRoles}
+          />
 
           <div className='flex-1'>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
@@ -57,7 +74,7 @@ export default function App() {
                 <div>Loading talent pool...</div>
               ) : (
                 <>
-                  {talents.map((t) => (
+                  {filteredTalents.map((t) => (
                     <TalentCard key={t.id} talent={t} />
                   ))}
                 </>
