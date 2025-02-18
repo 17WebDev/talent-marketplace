@@ -1,10 +1,15 @@
 import { useState } from 'react';
 import { Role, roles } from '../enums/roles.enum';
-import { techStack, techStackByRole } from '../enums/tech-stack.enum';
+import {
+  TechStack,
+  techStack,
+  techStackByRole,
+} from '../enums/tech-stack.enum';
 import Checkbox from './inputs/Checkbox';
 
 export default function FilterSidebar() {
   const [selectedRoles, setSelectedRoles] = useState<Role[]>([]);
+  const [selectedTechStack, setSelectedTechStack] = useState<TechStack[]>([]);
 
   const handleRoleChange = (role: Role) => {
     setSelectedRoles((prev) => {
@@ -12,6 +17,15 @@ export default function FilterSidebar() {
         return prev.filter((r) => r !== role);
       }
       return [...prev, role];
+    });
+  };
+
+  const handleTechStackChange = (tech: TechStack) => {
+    setSelectedTechStack((prev) => {
+      if (prev.includes(tech)) {
+        return prev.filter((t) => t !== tech);
+      }
+      return [...prev, tech];
     });
   };
 
@@ -27,41 +41,51 @@ export default function FilterSidebar() {
       <div className='bg-white p-6 rounded-lg shadow-sm space-y-4'>
         <h2 className='text-lg font-semibold'>Filters</h2>
         <div className='space-y-6'>
-          {/* Role Filter */}
-          <div className='space-y-2'>
-            <h3 className='text-sm font-medium text-gray-700'>Role</h3>
-            <div className='space-y-2'>
-              {roles.map((role) => (
-                <Checkbox
-                  key={role}
-                  id={`role-${role}`}
-                  name={`role-${role}`}
-                  checked={selectedRoles.includes(role)}
-                  onChange={() => handleRoleChange(role)}
-                  size='sm'
-                >
-                  {role}
-                </Checkbox>
-              ))}
-            </div>
-          </div>
-          {/* Tech Stack */}
-          <div className='space-y-2'>
-            <h3 className='text-sm font-medium text-gray-700'>Tech Stack</h3>
-            <div className='space-y-2'>
-              {filteredTechStack.map((tech) => (
-                <label key={tech} className='flex items-center'>
-                  <input
-                    type='checkbox'
-                    className='rounded border-gray-300 text-indigo-600 focus:ring-indigo-500'
-                  />
-                  <span className='ml-2 text-sm text-gray-600'>{tech}</span>
-                </label>
-              ))}
-            </div>
-          </div>
+          <Section title='Role'>
+            {roles.map((role) => (
+              <Checkbox
+                key={role}
+                id={`role-${role}`}
+                name={`role-${role}`}
+                checked={selectedRoles.includes(role)}
+                onChange={() => handleRoleChange(role)}
+                size='sm'
+              >
+                {role}
+              </Checkbox>
+            ))}
+          </Section>
+          <Section title='Tech Stack'>
+            {filteredTechStack.map((tech) => (
+              <Checkbox
+                key={tech}
+                id={`tech-${tech}`}
+                name={`tech-${tech}`}
+                checked={selectedTechStack.includes(tech)}
+                onChange={() => handleTechStackChange(tech)}
+                size='sm'
+              >
+                {tech}
+              </Checkbox>
+            ))}
+          </Section>
         </div>
       </div>
+    </div>
+  );
+}
+
+function Section({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className='space-y-2'>
+      <h3 className='text-sm font-medium text-gray-700'>{title}</h3>
+      <div className='space-y-2'>{children}</div>
     </div>
   );
 }
