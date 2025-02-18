@@ -1,4 +1,5 @@
 import { Talent } from '../types';
+import ViewMoreButton from './ViewMoreButton';
 
 interface TalentCardProps {
   talent: Talent;
@@ -23,9 +24,7 @@ export default function TalentCard({ talent }: TalentCardProps) {
           </span>
         ))}
       </div>
-      <button className='mt-4 w-full bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors'>
-        Schedule Call
-      </button>
+      <ViewMoreButton talent={talent} />
     </div>
   );
 }
