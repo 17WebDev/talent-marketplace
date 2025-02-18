@@ -1,5 +1,7 @@
 import { Role } from './roles.enum';
 
+const sortArray = <T extends string>(arr: T[]): T[] => [...arr].sort();
+
 const frontendTechnologies: TechStack[] = [
   'React',
   'Angular',
@@ -38,7 +40,7 @@ const backendTechnologies: TechStack[] = [
 ] as const;
 
 export const techStackByRole: { [key in Role]: TechStack[] } = {
-  'AI Engineer': [
+  'AI Engineer': sortArray([
     'Python',
     'TensorFlow',
     'OpenCV',
@@ -47,28 +49,28 @@ export const techStackByRole: { [key in Role]: TechStack[] } = {
     'Hugging Face',
     'Docker',
     'AWS',
-  ],
-  'Backend Engineer': [...backendTechnologies],
-  'Frontend Engineer': [...frontendTechnologies],
-  'Fullstack Engineer': [
+  ]),
+  'Backend Engineer': sortArray([...backendTechnologies]),
+  'Frontend Engineer': sortArray([...frontendTechnologies]),
+  'Fullstack Engineer': sortArray([
     ...new Set([...frontendTechnologies, ...backendTechnologies]),
-  ],
-  'Product Manager': [
+  ]),
+  'Product Manager': sortArray([
     'Agile Methodologies',
     'Jira',
     'Linear',
     'ClickUp',
     'Figma',
-  ],
-  'QA Engineer': [
+  ]),
+  'QA Engineer': sortArray([
     'Cypress',
     'Playwright',
     'Selenium',
     'JavaScript',
     'TypeScript',
     'Python',
-  ],
-  'UX/UI Designer': ['Figma', 'Adobe XD', 'Framer Motion'],
+  ]),
+  'UX/UI Designer': sortArray(['Figma', 'Adobe XD', 'Framer Motion']),
 };
 
 export const techStack = [
