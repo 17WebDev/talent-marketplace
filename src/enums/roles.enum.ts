@@ -1,8 +1,8 @@
 export const roles = [
-  'Frontend Engineer',
-  'Backend Engineer',
-  'Fullstack Engineer',
   'AI Engineer',
+  'Backend Engineer',
+  'Frontend Engineer',
+  'Fullstack Engineer',
   'Product Manager',
   'QA Engineer',
   'UX/UI Designer',
