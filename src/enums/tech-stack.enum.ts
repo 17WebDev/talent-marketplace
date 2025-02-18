@@ -1,13 +1,74 @@
 import { Role } from './roles.enum';
 
+const frontendTechnologies: TechStack[] = [
+  'React',
+  'Angular',
+  'Vue',
+  'Next.js',
+  'TypeScript',
+  'JavaScript',
+  'Astro',
+  'Tailwind CSS',
+  'Redux',
+  'Framer Motion',
+  'Vite',
+] as const;
+
+const backendTechnologies: TechStack[] = [
+  'Node.js',
+  'Python',
+  'TypeScript',
+  'JavaScript',
+  'NestJS',
+  'Express',
+  'FastAPI',
+  'Flask',
+  'Go',
+  'Ruby on Rails',
+  'Laravel',
+  'MongoDB',
+  'PostgreSQL',
+  'MySQL',
+  'Redis',
+  'Prisma',
+  'TypeOrm',
+  'Docker',
+  'Kubernetes',
+  'AWS',
+] as const;
+
 export const techStackByRole: { [key in Role]: TechStack[] } = {
-  'AI Engineer': ['Python'],
-  'Backend Engineer': [],
-  'Frontend Engineer': [],
-  'Fullstack Engineer': [],
-  'Product Manager': [],
-  'QA Engineer': [],
-  'UX/UI Designer': [],
+  'AI Engineer': [
+    'Python',
+    'TensorFlow',
+    'OpenCV',
+    'Chat GPT',
+    'Claude 3.5 Sonnet',
+    'Hugging Face',
+    'Docker',
+    'AWS',
+  ],
+  'Backend Engineer': [...backendTechnologies],
+  'Frontend Engineer': [...frontendTechnologies],
+  'Fullstack Engineer': [
+    ...new Set([...frontendTechnologies, ...backendTechnologies]),
+  ],
+  'Product Manager': [
+    'Agile Methodologies',
+    'Jira',
+    'Linear',
+    'ClickUp',
+    'Figma',
+  ],
+  'QA Engineer': [
+    'Cypress',
+    'Playwright',
+    'Selenium',
+    'JavaScript',
+    'TypeScript',
+    'Python',
+  ],
+  'UX/UI Designer': ['Figma', 'Adobe XD', 'Framer Motion'],
 };
 
 export const techStack = [
