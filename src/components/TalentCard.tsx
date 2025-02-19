@@ -7,7 +7,7 @@ interface TalentCardProps {
 
 export default function TalentCard({ talent }: TalentCardProps) {
   return (
-    <div className='bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow p-4'>
+    <div className='bg-white rounded-lg shadow-xs overflow-hidden hover:shadow-md transition-shadow p-4'>
       <h3 className='text-lg font-semibold text-gray-900'>{talent.name}</h3>
       <p className='text-sm text-gray-600'>{talent.role}</p>
       <p className='text-sm text-gray-500 mt-1'>

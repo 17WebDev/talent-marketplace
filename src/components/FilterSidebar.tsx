@@ -45,8 +45,8 @@ export default function FilterSidebar({
       : techStack;
 
   return (
-    <div className={`w-64 flex-shrink-0 block`}>
-      <div className='bg-white p-6 rounded-lg shadow-sm space-y-4'>
+    <div className={`w-64 shrink-0 block`}>
+      <div className='bg-white p-6 rounded-lg shadow-xs space-y-4'>
         <h2 className='text-lg font-semibold'>Filters</h2>
         <div className='space-y-6'>
           <Section title='Role'>

@@ -33,7 +33,7 @@ export default function Modal({
           leaveFrom='opacity-100'
           leaveTo='opacity-0'
         >
-          <div className='fixed inset-0 bg-black/40 backdrop-blur transition-opacity' />
+          <div className='fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity' />
         </TransitionChild>
         <div className='fixed inset-0 z-10 overflow-y-auto'>
           <div className='flex min-h-full items-end justify-center text-center sm:items-center'>

@@ -108,14 +108,14 @@ export default function LeadForm({ open, onSubmit, onClose }: LeadFormProps) {
           <button
             type='button'
             onClick={onClose}
-            className='flex-1 border border-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-50'
+            className='flex-1 border cursor-pointer border-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-50'
           >
             Cancel
           </button>
           <button
             type='submit'
             disabled={isSubmitting}
-            className='flex-1 bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 disabled:bg-indigo-400'
+            className='flex-1 bg-indigo-600 cursor-pointer text-white py-2 px-4 rounded-md hover:bg-indigo-700 disabled:bg-indigo-400'
           >
             {isSubmitting ? 'Submitting...' : 'Submit'}
           </button>

@@ -15,7 +15,7 @@ export default function Header({
           <div className='flex items-center space-x-4'>
             <button
               onClick={() => setShowForm(true)}
-              className='bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700'
+              className='bg-indigo-600 cursor-pointer text-white px-4 py-2 rounded-md hover:bg-indigo-700'
             >
               Explore Talent Pool
             </button>

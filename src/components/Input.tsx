@@ -98,7 +98,7 @@ export default function Input({
           onBlur={onBlur as React.FocusEventHandler<HTMLTextAreaElement>}
           required={required}
           ref={inputReference}
-          className={`no-scrollbar relative block max-h-44 w-full border resize-none shadow-sm rounded-lg bg-white px-3 py-1.5  outline-none sm:leading-6 ${getDisabledClasses(
+          className={`no-scrollbar relative block max-h-44 w-full border resize-none shadow-sm rounded-lg bg-white px-3 py-1.5  outline-hidden sm:leading-6 ${getDisabledClasses(
             disabled
           )} ${getValidClasses(valid)}  ${!valid ? 'pr-12' : ''} ${
             inputClassname ?? ''
@@ -152,7 +152,7 @@ export default function Input({
         onBlur={onBlur as React.FocusEventHandler<HTMLInputElement>}
         required={required}
         defaultValue={defaultValue}
-        className={`block w-full rounded-lg bg-white px-3 py-1.5 border shadow-sm outline-none sm:leading-6 ${getDisabledClasses(
+        className={`block w-full rounded-lg bg-white px-3 py-1.5 border shadow-sm outline-hidden sm:leading-6 ${getDisabledClasses(
           disabled
         )} ${getValidClasses(valid)} ${!valid ? 'pr-10' : ''} ${
           inputClassname ?? ''
@@ -184,7 +184,7 @@ export default function Input({
       )}
       <div
         className={cn(
-          'relative rounded-md shadow-sm',
+          'relative rounded-md shadow-xs',
           className,
           (label || description) && 'mt-2'
         )}
@@ -200,7 +200,7 @@ export default function Input({
         )}
         {type === 'password' && (
           <button
-            className='absolute inset-y-0 right-0 flex items-center pr-3'
+            className='absolute cursor-pointer inset-y-0 right-0 flex items-center pr-3'
             type='button'
             onClick={() => setViewPassword(!viewPassword)}
           >

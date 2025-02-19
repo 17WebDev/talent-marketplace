@@ -24,7 +24,7 @@ export default function ViewMoreButton({ talent }: { talent: Talent }) {
     <>
       <button
         onClick={() => setIsModalOpen(true)}
-        className='mt-4 w-full bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors'
+        className='mt-4 w-full cursor-pointer bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors'
       >
         View More
       </button>

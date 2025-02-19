@@ -31,7 +31,7 @@ export default function Checkbox({
   const getInputSize = () => {
     switch (size) {
       case 'sm': {
-        return 'h-4 w-4 rounded-sm';
+        return 'h-4 w-4 rounded-xs';
       }
       case 'md': {
         return 'h-6 w-6 rounded-md';

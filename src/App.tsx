@@ -60,7 +60,7 @@ export default function App() {
       <HeroSection />
       {/* Main Content */}
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative'>
-        <div className={`flex gap-8 ${!hasAccess ? 'filter blur-sm' : ''}`}>
+        <div className={`flex gap-8 ${!hasAccess ? 'filter blur-xs' : ''}`}>
           <FilterSidebar
             selectedTechStack={selectedTechStack}
             setSelectedTechStack={setSelectedTechStack}
@@ -87,7 +87,7 @@ export default function App() {
           <div className='absolute inset-0 flex items-center justify-center'>
             <button
               onClick={() => setShowForm(true)}
-              className='bg-indigo-600 text-white px-6 py-3 rounded-md text-lg hover:bg-indigo-700 z-10'
+              className='bg-indigo-600 cursor-pointer text-white px-6 py-3 rounded-md text-lg hover:bg-indigo-700 z-10'
             >
               Explore Talent Pool
             </button>
