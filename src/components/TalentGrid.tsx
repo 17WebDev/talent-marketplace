@@ -8,6 +8,7 @@ import TalentCard from './TalentCard';
 import toast from 'react-hot-toast';
 import formatTalents from '../helpers/formatTalents';
 import airtableService from '../services/airtable.service';
+import TalentCardSkeleton from './skeletons/TalentCardSkeleton';
 
 interface ITalentGrid {
   hasAccess: boolean;
@@ -55,7 +56,11 @@ export default function TalentGrid({ hasAccess }: ITalentGrid) {
       <div className='flex-1'>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
           {loading ? (
-            <div>Loading talent pool...</div>
+            <>
+              {Array.from({ length: 6 }).map((_, index) => (
+                <TalentCardSkeleton key={index} />
+              ))}
+            </>
           ) : (
             <>
               {filteredTalents.map((t) => (
