@@ -1,3 +1,4 @@
+import { Seniority } from '../enums/seniority.enum';
 import { Talent } from '../types/Talent';
 import ViewMoreButton from './ViewMoreButton';
 
@@ -9,7 +10,9 @@ export default function TalentCard({ talent }: TalentCardProps) {
   return (
     <div className='bg-white rounded-lg shadow-xs overflow-hidden hover:shadow-md transition-shadow p-4'>
       <h3 className='text-lg font-semibold text-gray-900'>{talent.name}</h3>
-      <p className='text-sm text-gray-600'>{talent.role}</p>
+      <p className='text-sm text-gray-600'>
+        {getSeniorityPrefix(talent.seniority)} {talent.role}
+      </p>
       <p className='text-sm text-gray-500 mt-1'>
         {talent.yearsOfExperience}{' '}
         {talent.yearsOfExperience === 1 ? 'year' : 'years'} of experience
@@ -27,4 +30,26 @@ export default function TalentCard({ talent }: TalentCardProps) {
       <ViewMoreButton talent={talent} />
     </div>
   );
+}
+
+function getSeniorityPrefix(seniority: Seniority | undefined): string {
+  let prefix = '';
+
+  switch (seniority) {
+    case 'Intern':
+      prefix = 'Intern';
+      break;
+    case 'Junior':
+      prefix = 'Jr.';
+      break;
+    case 'Mid-Level':
+      prefix = 'Mid';
+      break;
+    case 'Senior':
+    case 'Expert':
+      prefix = 'Sr.';
+      break;
+  }
+
+  return prefix;
 }
