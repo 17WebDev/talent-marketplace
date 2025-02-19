@@ -7,7 +7,7 @@ import HeroSection from './components/HeroSection';
 import toast from 'react-hot-toast';
 import airtableService from './services/airtable.service';
 import formatTalents from './helpers/formatTalents';
-import { Talent } from './types';
+import { Talent } from './types/Talent';
 import { TechStack } from './enums/tech-stack.enum';
 import { Role } from './enums/roles.enum';
 import filterTalents from './helpers/filterTalents';

@@ -1,4 +1,4 @@
-import { Talent } from '../types';
+import { Talent } from '../types/Talent';
 import ViewMoreButton from './ViewMoreButton';
 
 interface TalentCardProps {

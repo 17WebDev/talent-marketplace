@@ -1,5 +1,5 @@
 import { FieldSet, Records } from 'airtable';
-import { Talent } from '../types';
+import { Talent } from '../types/Talent';
 import { Seniority } from '../enums/seniority.enum';
 import { EnglishLevel } from '../enums/english-levels.enum';
 import { Role } from '../enums/roles.enum';

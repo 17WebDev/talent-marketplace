@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Modal from './Modal';
-import { Talent } from '../types';
+import { Talent } from '../types/Talent';
 
 export default function ViewMoreButton({ talent }: { talent: Talent }) {
   const [isModalOpen, setIsModalOpen] = useState(false);

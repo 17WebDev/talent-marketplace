@@ -1,6 +1,6 @@
 import { Role } from '../enums/roles.enum';
 import { TechStack } from '../enums/tech-stack.enum';
-import { Talent } from '../types';
+import { Talent } from '../types/Talent';
 
 export default function filterTalents(
   talents: Talent[],

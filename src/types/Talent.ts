@@ -1,7 +1,7 @@
-import { EnglishLevel } from './enums/english-levels.enum';
-import { Role } from './enums/roles.enum';
-import { Seniority } from './enums/seniority.enum';
-import { TechStack } from './enums/tech-stack.enum';
+import { EnglishLevel } from '../enums/english-levels.enum';
+import { Role } from '../enums/roles.enum';
+import { Seniority } from '../enums/seniority.enum';
+import { TechStack } from '../enums/tech-stack.enum';
 
 export interface Talent {
   id: string;
