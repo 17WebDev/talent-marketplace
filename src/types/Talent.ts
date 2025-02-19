@@ -16,4 +16,6 @@ export interface Talent {
   hourlyRate: number | undefined;
   monthlyRate: number | undefined;
   skills: TechStack[];
+  pastCompanies: string[];
+  status: string | undefined;
 }

@@ -20,6 +20,8 @@ export default function formatTalents(records: Records<FieldSet>): Talent[] {
       hourlyRate: record.fields['Hourly Rate'] as number,
       monthlyRate: record.fields['Monthly Rate'] as number,
       skills: (record.fields.Skills as TechStack[]) ?? [],
+      pastCompanies: (record.fields['Past Companies'] as string[]) ?? [],
+      status: record.fields.Status as string,
     } satisfies Talent;
   });
   console.log(formattedTalent);
