@@ -19,7 +19,7 @@ export default function TalentCard({ talent }: TalentCardProps) {
         {talent.yearsOfExperience}{' '}
         {talent.yearsOfExperience === 1 ? 'year' : 'years'} of experience
       </p>
-      <div className='mt-3 flex flex-wrap gap-2'>
+      <Section title='Top Skills'>
         {talent.skills.slice(0, numberOfSkillsToShow).map((skill) => (
           <span
             key={skill}
@@ -28,8 +28,35 @@ export default function TalentCard({ talent }: TalentCardProps) {
             {skill}
           </span>
         ))}
-      </div>
+      </Section>
+      {talent.pastCompanies && talent.pastCompanies.length > 0 && (
+        <Section title='Past Companies'>
+          {talent.pastCompanies.slice(0, 3).map((company) => (
+            <span
+              key={company}
+              className='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800'
+            >
+              {company}
+            </span>
+          ))}
+        </Section>
+      )}
       <ViewMoreButton talent={talent} />
+    </div>
+  );
+}
+
+function Section({
+  children,
+  title,
+}: {
+  children: React.ReactNode;
+  title: string;
+}) {
+  return (
+    <div className='mt-4 space-y-2'>
+      <h4 className='text-xs font-medium text-gray-600'>{title}</h4>
+      <div className='flex flex-wrap gap-2'>{children}</div>
     </div>
   );
 }
