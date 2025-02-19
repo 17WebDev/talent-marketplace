@@ -14,7 +14,7 @@ export default function LeadForm({ open, onSubmit, onClose }: LeadFormProps) {
     lastName: '',
     email: '',
     companyUrl: '',
-    additionalNotes: '',
+    typeOfTalentInfo: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -84,12 +84,12 @@ export default function LeadForm({ open, onSubmit, onClose }: LeadFormProps) {
           required
         />
         <Input
-          value={formData.additionalNotes}
+          value={formData.typeOfTalentInfo}
           onChange={(e) =>
-            setFormData({ ...formData, additionalNotes: e.target.value })
+            setFormData({ ...formData, typeOfTalentInfo: e.target.value })
           }
-          label='Additional Notes'
-          name='additionalNotes'
+          label='What type of talent are you looking for?'
+          name='typeOfTalentInfo'
           type='textarea'
           minRows={3}
         />
