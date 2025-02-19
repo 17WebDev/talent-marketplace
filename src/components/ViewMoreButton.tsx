@@ -1,20 +1,14 @@
 import { useState } from 'react';
 import Modal from './Modal';
 import { Talent } from '../types/Talent';
+import { getSeniorityPrefix } from '../helpers/getSeniorityPrefix';
+import PillSection from './PillSection';
+import { numberOfSkillsToShow } from '../constants';
 
 export default function ViewMoreButton({ talent }: { talent: Talent }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const {
-    name,
-    email,
-    linkedinUrl,
-    chargesHourly,
-    hourlyRate,
-    monthlyRate,
-    englishLevel,
-    seniority,
-    skills,
-  } = talent;
+  const { name, role, yearsOfExperience, pastCompanies, seniority, skills } =
+    talent;
 
   function closeModal() {
     setIsModalOpen(false);
@@ -29,26 +23,16 @@ export default function ViewMoreButton({ talent }: { talent: Talent }) {
         View More
       </button>
       <Modal open={isModalOpen} onClose={closeModal} title={name}>
-        <div className='flex flex-col gap-3 w-full items-start'>
-          <p>Email: {email}</p>
-          <div className='flex items-center'>
-            <span className='mr-1'>Linkedin URL:</span>
-            <a
-              href={linkedinUrl}
-              target='_blank'
-              rel='noopener noreferrer'
-              className='text-sky-600 hover:underline'
-            >
-              {linkedinUrl}
-            </a>
-          </div>
-          <p>Charges Hourly: {chargesHourly ? 'Yes' : 'No'}</p>
-          {hourlyRate && <p>Hourly Rate: {hourlyRate}</p>}
-          {monthlyRate && <p>Monthly Rate: ${monthlyRate}</p>}
-          <p>English Level: {englishLevel}</p>
-          <p>Seniority: {seniority}</p>
-          <div className='flex gap-2'>
-            {skills.map((skill) => (
+        <div className='flex flex-col items-start'>
+          <p className='text-sm text-gray-600'>
+            {getSeniorityPrefix(seniority)} {role}
+          </p>
+          <p className='text-sm text-gray-500 mt-1'>
+            {yearsOfExperience} {yearsOfExperience === 1 ? 'year' : 'years'} of
+            experience
+          </p>
+          <PillSection title='Top Skills'>
+            {skills.slice(0, numberOfSkillsToShow).map((skill) => (
               <span
                 key={skill}
                 className='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800'
@@ -56,7 +40,19 @@ export default function ViewMoreButton({ talent }: { talent: Talent }) {
                 {skill}
               </span>
             ))}
-          </div>
+          </PillSection>
+          {pastCompanies && pastCompanies.length > 0 && (
+            <PillSection title='Past Companies'>
+              {pastCompanies.slice(0, 3).map((company) => (
+                <span
+                  key={company}
+                  className='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800'
+                >
+                  {company}
+                </span>
+              ))}
+            </PillSection>
+          )}
         </div>
       </Modal>
     </>

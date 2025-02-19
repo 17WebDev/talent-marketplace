@@ -1,3 +1,4 @@
+import { numberOfSkillsToShow } from '../constants';
 import { getSeniorityPrefix } from '../helpers/getSeniorityPrefix';
 import { Talent } from '../types/Talent';
 import PillSection from './PillSection';
@@ -8,8 +9,6 @@ interface TalentCardProps {
 }
 
 export default function TalentCard({ talent }: TalentCardProps) {
-  const numberOfSkillsToShow = 3;
-
   return (
     <div className='bg-white rounded-lg shadow-xs overflow-hidden hover:shadow-md transition-shadow p-4'>
       <h3 className='text-lg font-semibold text-gray-900'>{talent.name}</h3>
