@@ -7,6 +7,8 @@ interface TalentCardProps {
 }
 
 export default function TalentCard({ talent }: TalentCardProps) {
+  const numberOfSkillsToShow = 3;
+
   return (
     <div className='bg-white rounded-lg shadow-xs overflow-hidden hover:shadow-md transition-shadow p-4'>
       <h3 className='text-lg font-semibold text-gray-900'>{talent.name}</h3>
@@ -18,7 +20,7 @@ export default function TalentCard({ talent }: TalentCardProps) {
         {talent.yearsOfExperience === 1 ? 'year' : 'years'} of experience
       </p>
       <div className='mt-3 flex flex-wrap gap-2'>
-        {talent.skills.map((skill) => (
+        {talent.skills.slice(0, numberOfSkillsToShow).map((skill) => (
           <span
             key={skill}
             className='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800'
