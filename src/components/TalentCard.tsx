@@ -1,5 +1,6 @@
 import { getSeniorityPrefix } from '../helpers/getSeniorityPrefix';
 import { Talent } from '../types/Talent';
+import PillSection from './PillSection';
 import ViewMoreButton from './ViewMoreButton';
 
 interface TalentCardProps {
@@ -19,7 +20,7 @@ export default function TalentCard({ talent }: TalentCardProps) {
         {talent.yearsOfExperience}{' '}
         {talent.yearsOfExperience === 1 ? 'year' : 'years'} of experience
       </p>
-      <Section title='Top Skills'>
+      <PillSection title='Top Skills'>
         {talent.skills.slice(0, numberOfSkillsToShow).map((skill) => (
           <span
             key={skill}
@@ -28,9 +29,9 @@ export default function TalentCard({ talent }: TalentCardProps) {
             {skill}
           </span>
         ))}
-      </Section>
+      </PillSection>
       {talent.pastCompanies && talent.pastCompanies.length > 0 && (
-        <Section title='Past Companies'>
+        <PillSection title='Past Companies'>
           {talent.pastCompanies.slice(0, 3).map((company) => (
             <span
               key={company}
@@ -39,24 +40,9 @@ export default function TalentCard({ talent }: TalentCardProps) {
               {company}
             </span>
           ))}
-        </Section>
+        </PillSection>
       )}
       <ViewMoreButton talent={talent} />
-    </div>
-  );
-}
-
-function Section({
-  children,
-  title,
-}: {
-  children: React.ReactNode;
-  title: string;
-}) {
-  return (
-    <div className='mt-4 space-y-2'>
-      <h4 className='text-xs font-medium text-gray-600'>{title}</h4>
-      <div className='flex flex-wrap gap-2'>{children}</div>
     </div>
   );
 }
