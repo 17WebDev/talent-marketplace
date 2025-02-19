@@ -1,4 +1,4 @@
-import { Seniority } from '../enums/seniority.enum';
+import { getSeniorityPrefix } from '../helpers/getSeniorityPrefix';
 import { Talent } from '../types/Talent';
 import ViewMoreButton from './ViewMoreButton';
 
@@ -59,26 +59,4 @@ function Section({
       <div className='flex flex-wrap gap-2'>{children}</div>
     </div>
   );
-}
-
-function getSeniorityPrefix(seniority: Seniority | undefined): string {
-  let prefix = '';
-
-  switch (seniority) {
-    case 'Intern':
-      prefix = 'Intern';
-      break;
-    case 'Junior':
-      prefix = 'Jr.';
-      break;
-    case 'Mid-Level':
-      prefix = 'Mid';
-      break;
-    case 'Senior':
-    case 'Expert':
-      prefix = 'Sr.';
-      break;
-  }
-
-  return prefix;
 }
