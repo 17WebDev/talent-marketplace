@@ -4,6 +4,7 @@ import { Talent } from '../types/Talent';
 import { getSeniorityPrefix } from '../helpers/getSeniorityPrefix';
 import PillSection from './PillSection';
 import { numberOfSkillsToShow } from '../constants';
+import { formatName } from '../helpers/forrmatName';
 
 export default function ViewMoreButton({ talent }: { talent: Talent }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,7 +23,7 @@ export default function ViewMoreButton({ talent }: { talent: Talent }) {
       >
         View More
       </button>
-      <Modal open={isModalOpen} onClose={closeModal} title={name}>
+      <Modal open={isModalOpen} onClose={closeModal} title={formatName(name)}>
         <div className='flex flex-col items-start'>
           <p className='text-sm text-gray-600'>
             {getSeniorityPrefix(seniority)} {role}

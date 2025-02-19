@@ -1,4 +1,5 @@
 import { numberOfSkillsToShow } from '../constants';
+import { formatName } from '../helpers/forrmatName';
 import { getSeniorityPrefix } from '../helpers/getSeniorityPrefix';
 import { Talent } from '../types/Talent';
 import PillSection from './PillSection';
@@ -11,7 +12,9 @@ interface TalentCardProps {
 export default function TalentCard({ talent }: TalentCardProps) {
   return (
     <div className='bg-white rounded-lg shadow-xs overflow-hidden hover:shadow-md transition-shadow p-4'>
-      <h3 className='text-lg font-semibold text-gray-900'>{talent.name}</h3>
+      <h3 className='text-lg font-semibold text-gray-900'>
+        {formatName(talent.name)}
+      </h3>
       <p className='text-sm text-gray-600'>
         {getSeniorityPrefix(talent.seniority)} {talent.role}
       </p>
