@@ -24,6 +24,6 @@ export default function formatTalents(records: Records<FieldSet>): Talent[] {
       status: record.fields.Status as string,
     } satisfies Talent;
   });
-  console.log(formattedTalent);
+
   return formattedTalent;
 }
