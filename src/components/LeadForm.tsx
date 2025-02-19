@@ -13,7 +13,6 @@ export default function LeadForm({ open, onSubmit, onClose }: LeadFormProps) {
     firstName: '',
     lastName: '',
     email: '',
-    linkedinUrl: '',
     companyUrl: '',
     additionalNotes: '',
   });
@@ -72,16 +71,6 @@ export default function LeadForm({ open, onSubmit, onClose }: LeadFormProps) {
           label='Email'
           type='email'
           name='email'
-          required
-        />
-        <Input
-          value={formData.linkedinUrl}
-          onChange={(e) =>
-            setFormData({ ...formData, linkedinUrl: e.target.value })
-          }
-          label='LinkedIn URL'
-          type='url'
-          name='linkedinUrl'
           required
         />
         <Input
