@@ -9,10 +9,8 @@ const frontendTechnologies: TechStack[] = [
   'Next.js',
   'TypeScript',
   'JavaScript',
-  'Astro',
   'Tailwind CSS',
   'Redux',
-  'Framer Motion',
   'Vite',
 ] as const;
 
@@ -43,7 +41,6 @@ export const techStackByRole: { [key in Role]: TechStack[] } = {
   'AI Engineer': sortArray([
     'Python',
     'TensorFlow',
-    'OpenCV',
     'Chat GPT',
     'Claude 3.5 Sonnet',
     'Hugging Face',
@@ -55,13 +52,7 @@ export const techStackByRole: { [key in Role]: TechStack[] } = {
   'Fullstack Engineer': sortArray([
     ...new Set([...frontendTechnologies, ...backendTechnologies]),
   ]),
-  'Product Manager': sortArray([
-    'Agile Methodologies',
-    'Jira',
-    'Linear',
-    'ClickUp',
-    'Figma',
-  ]),
+  'Product Manager': sortArray(['Jira', 'Linear', 'ClickUp', 'Figma']),
   'QA Engineer': sortArray([
     'Cypress',
     'Playwright',
@@ -70,15 +61,12 @@ export const techStackByRole: { [key in Role]: TechStack[] } = {
     'TypeScript',
     'Python',
   ]),
-  'UX/UI Designer': sortArray(['Figma', 'Adobe XD', 'Framer Motion']),
+  'UX/UI Designer': sortArray(['Figma']),
 };
 
 export const techStack = [
   '.NET',
-  'Adobe XD',
-  'Agile Methodologies',
   'Angular',
-  'Astro',
   'AWS',
   'C#',
   'C / C++',
@@ -95,7 +83,6 @@ export const techStack = [
   'Firebase',
   'Flask',
   'Flutter',
-  'Framer Motion',
   'Go',
   'Hugging Face',
   'JavaScript',
@@ -108,10 +95,8 @@ export const techStack = [
   'NestJS',
   'Next.js',
   'Node.js',
-  'OpenCV',
   'Playwright',
   'PostgreSQL',
-  'Posthog',
   'Prisma',
   'Python',
   'React',
@@ -121,12 +106,9 @@ export const techStack = [
   'Ruby on Rails',
   'Rust',
   'Selenium',
-  'Sentry',
-  'Stripe',
   'Tailwind CSS',
   'TensorFlow',
   'Terraform',
-  'tRPC',
   'TypeOrm',
   'TypeScript',
   'Vite',
