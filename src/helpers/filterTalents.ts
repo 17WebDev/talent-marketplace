@@ -7,20 +7,22 @@ export default function filterTalents(
   techStack: TechStack[],
   roles: Role[]
 ): Talent[] {
-  const filteredTalents = talents.filter((talent) => {
-    if (techStack.length === 0 && roles.length === 0) {
-      return true;
-    }
+  const filteredTalents = talents
+    .filter((talent) => talent.name && talent.role)
+    .filter((talent) => {
+      if (techStack.length === 0 && roles.length === 0) {
+        return true;
+      }
 
-    const matchesRole =
-      roles.length === 0 || (talent.role && roles.includes(talent.role));
+      const matchesRole =
+        roles.length === 0 || (talent.role && roles.includes(talent.role));
 
-    const matchesTechStack =
-      techStack.length === 0 ||
-      techStack.every((tech) => talent.skills.includes(tech));
+      const matchesTechStack =
+        techStack.length === 0 ||
+        techStack.every((tech) => talent.skills.includes(tech));
 
-    return matchesRole && matchesTechStack;
-  });
+      return matchesRole && matchesTechStack;
+    });
 
   return filteredTalents;
 }
