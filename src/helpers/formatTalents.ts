@@ -11,7 +11,8 @@ export default function formatTalents(records: Records<FieldSet>): Talent[] {
 
     return {
       id: record.id,
-      name: record.fields.Name as string,
+      firstName: record.fields['First Name'] as string,
+      lastName: record.fields['Last Name'] as string,
       seniority: record.fields.Seniority as Seniority,
       email: record.fields.Email as string,
       englishLevel: record.fields['English Level'] as EnglishLevel,

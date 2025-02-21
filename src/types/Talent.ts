@@ -5,7 +5,8 @@ import { TechStack } from '../enums/tech-stack.enum';
 
 export interface Talent {
   id: string;
-  name: string | undefined;
+  firstName: string | undefined;
+  lastName: string | undefined;
   email: string | undefined;
   seniority: Seniority | undefined;
   englishLevel: EnglishLevel | undefined;

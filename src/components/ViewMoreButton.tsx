@@ -4,12 +4,19 @@ import { Talent } from '../types/Talent';
 import { getSeniorityPrefix } from '../helpers/getSeniorityPrefix';
 import PillSection from './PillSection';
 import { numberOfSkillsToShow } from '../constants';
-import { formatName } from '../helpers/forrmatName';
+import { formatName } from '../helpers/formatName';
 
 export default function ViewMoreButton({ talent }: { talent: Talent }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { name, role, yearsOfExperience, pastCompanies, seniority, skills } =
-    talent;
+  const {
+    firstName,
+    lastName,
+    role,
+    yearsOfExperience,
+    pastCompanies,
+    seniority,
+    skills,
+  } = talent;
 
   function closeModal() {
     setIsModalOpen(false);
@@ -23,7 +30,11 @@ export default function ViewMoreButton({ talent }: { talent: Talent }) {
       >
         View More
       </button>
-      <Modal open={isModalOpen} onClose={closeModal} title={formatName(name)}>
+      <Modal
+        open={isModalOpen}
+        onClose={closeModal}
+        title={formatName(firstName, lastName)}
+      >
         <div className='flex flex-col items-start'>
           <p className='text-sm text-gray-600'>
             {getSeniorityPrefix(seniority)} {role}

@@ -1,5 +1,5 @@
 import { numberOfSkillsToShow } from '../constants';
-import { formatName } from '../helpers/forrmatName';
+import { formatName } from '../helpers/formatName';
 import { getSeniorityPrefix } from '../helpers/getSeniorityPrefix';
 import { Talent } from '../types/Talent';
 import PillSection from './PillSection';
@@ -16,7 +16,7 @@ export default function TalentCard({ talent }: TalentCardProps) {
         {talent.headshotUrl ? (
           <img
             src={talent.headshotUrl}
-            alt={`${formatName(talent.name)}'s headshot`}
+            alt={`${formatName(talent.firstName, talent.lastName)}'s headshot`}
             className='w-full h-full object-contain'
           />
         ) : (
@@ -33,7 +33,7 @@ export default function TalentCard({ talent }: TalentCardProps) {
       </div>
       <div className='p-4'>
         <h3 className='text-lg font-semibold text-gray-900'>
-          {formatName(talent.name)}
+          {formatName(talent.firstName, talent.lastName)}
         </h3>
         <p className='text-sm text-gray-600'>
           {getSeniorityPrefix(talent.seniority)} {talent.role}

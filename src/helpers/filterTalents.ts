@@ -8,7 +8,7 @@ export default function filterTalents(
   roles: Role[]
 ): Talent[] {
   const filteredTalents = talents
-    .filter((talent) => talent.name && talent.role)
+    .filter((talent) => talent.firstName && talent.role)
     .filter((talent) => {
       if (techStack.length === 0 && roles.length === 0) {
         return true;
