@@ -11,7 +11,7 @@ interface TalentCardProps {
 
 export default function TalentCard({ talent }: TalentCardProps) {
   return (
-    <div className='bg-white rounded-lg shadow-xs overflow-hidden hover:shadow-md transition-shadow '>
+    <div className='bg-white rounded-lg shadow-xs overflow-hidden hover:shadow-md transition-shadow flex flex-col'>
       <div className='w-full h-48 bg-gray-100'>
         {talent.headshotUrl ? (
           <img
@@ -31,7 +31,7 @@ export default function TalentCard({ talent }: TalentCardProps) {
           </div>
         )}
       </div>
-      <div className='p-4'>
+      <div className='p-4 flex flex-col flex-1'>
         <h3 className='text-lg font-semibold text-gray-900'>
           {formatName(talent.firstName, talent.lastName)}
         </h3>
@@ -66,7 +66,9 @@ export default function TalentCard({ talent }: TalentCardProps) {
             ))}
           </PillSection>
         )}
-        <ViewMoreButton talent={talent} />
+        <div className='flex-1 flex items-end'>
+          <ViewMoreButton talent={talent} />
+        </div>
       </div>
     </div>
   );
