@@ -82,7 +82,7 @@ export default function ViewMoreButton({ talent }: { talent: Talent }) {
           </div>
           <div className='flex items-center gap-2'>
             <ChatBubbleBottomCenterTextIcon className='h-5 w-5 text-gray-500' />
-            <p className='text-sm text-gray-600'>
+            <p className='text-sm text-gray-600 text-left'>
               {talent.description ?? '--'}
             </p>
           </div>
