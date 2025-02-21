@@ -3,8 +3,13 @@ import Modal from './Modal';
 import { Talent } from '../types/Talent';
 import { getSeniorityPrefix } from '../helpers/getSeniorityPrefix';
 import PillSection from './PillSection';
-import { numberOfSkillsToShow } from '../constants';
 import { formatName } from '../helpers/formatName';
+import {
+  BriefcaseIcon,
+  ChatBubbleBottomCenterTextIcon,
+  ClockIcon,
+  MapPinIcon,
+} from '@heroicons/react/24/outline';
 
 export default function ViewMoreButton({ talent }: { talent: Talent }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -16,6 +21,7 @@ export default function ViewMoreButton({ talent }: { talent: Talent }) {
     pastCompanies,
     seniority,
     skills,
+    pastRoles,
   } = talent;
 
   function closeModal() {
@@ -35,36 +41,81 @@ export default function ViewMoreButton({ talent }: { talent: Talent }) {
         onClose={closeModal}
         title={formatName(firstName, lastName)}
       >
-        <div className='flex flex-col items-start'>
-          <p className='text-sm text-gray-600'>
-            {getSeniorityPrefix(seniority)} {role}
-          </p>
-          <p className='text-sm text-gray-500 mt-1'>
-            {yearsOfExperience} {yearsOfExperience === 1 ? 'year' : 'years'} of
-            experience
-          </p>
-          <PillSection title='Top Skills'>
-            {skills.slice(0, numberOfSkillsToShow).map((skill) => (
-              <span
-                key={skill}
-                className='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800'
-              >
-                {skill}
-              </span>
-            ))}
+        <div className='flex flex-col items-start gap-3'>
+          <div className='flex items-center gap-2'>
+            <BriefcaseIcon className='h-5 w-5 text-gray-500' />
+            <p className='text-sm text-gray-600'>
+              {getSeniorityPrefix(seniority)} {role}
+            </p>
+          </div>
+          <div className='flex items-center gap-2'>
+            <ClockIcon className='h-5 w-5 text-gray-500' />
+            <p className='text-sm text-gray-600'>
+              {yearsOfExperience
+                ? `${yearsOfExperience} ${
+                    yearsOfExperience === 1 ? 'year' : 'years'
+                  } of experience`
+                : '--'}
+            </p>
+          </div>
+          <div className='flex items-center gap-2'>
+            <MapPinIcon className='h-5 w-5 text-gray-500 ' />
+            <p className='text-sm text-gray-600'>{talent.location ?? '--'}</p>
+          </div>
+          <div className='flex items-center gap-2'>
+            <ChatBubbleBottomCenterTextIcon className='h-5 w-5 text-gray-500' />
+            <p className='text-sm text-gray-600'>
+              {talent.description ?? '--'}
+            </p>
+          </div>
+          <PillSection title='Top 1-5 most notable past roles'>
+            {pastRoles.length > 0 ? (
+              <>
+                {pastRoles.map((role) => (
+                  <span
+                    key={role}
+                    className='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800'
+                  >
+                    {role}
+                  </span>
+                ))}
+              </>
+            ) : (
+              <p className='text-sm text-gray-600'>--</p>
+            )}
           </PillSection>
-          {pastCompanies && pastCompanies.length > 0 && (
-            <PillSection title='Past Companies'>
-              {pastCompanies.slice(0, 3).map((company) => (
-                <span
-                  key={company}
-                  className='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800'
-                >
-                  {company}
-                </span>
-              ))}
-            </PillSection>
-          )}
+          <PillSection title='All Programming Languages and Frameworks'>
+            {skills.length > 0 ? (
+              <>
+                {skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800'
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </>
+            ) : (
+              <p className='text-sm text-gray-600'>--</p>
+            )}
+          </PillSection>
+          <PillSection title='Past Companies'>
+            {pastCompanies.length > 0 ? (
+              <>
+                {pastCompanies.map((company) => (
+                  <span
+                    key={company}
+                    className='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800'
+                  >
+                    {company}
+                  </span>
+                ))}
+              </>
+            ) : (
+              <p className='text-sm text-gray-600'>--</p>
+            )}
+          </PillSection>
         </div>
       </Modal>
     </>

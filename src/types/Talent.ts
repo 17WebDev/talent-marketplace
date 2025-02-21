@@ -20,4 +20,7 @@ export interface Talent {
   pastCompanies: string[];
   status: string | undefined;
   headshotUrl: string | undefined;
+  location: string | undefined;
+  description: string | undefined;
+  pastRoles: string[];
 }
