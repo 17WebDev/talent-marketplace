@@ -63,9 +63,11 @@ export default function TalentGrid({ hasAccess }: ITalentGrid) {
             </>
           ) : filteredTalents.length > 0 ? (
             <>
-              {filteredTalents.map((t) => (
-                <TalentCard key={t.id} talent={t} />
-              ))}
+              {filteredTalents
+                .slice(0, hasAccess ? filteredTalents.length : 3)
+                .map((t) => (
+                  <TalentCard key={t.id} talent={t} />
+                ))}
             </>
           ) : (
             <p className='absolute left-1/2 top-10 -translate-x-1/2 text-gray-600'>
