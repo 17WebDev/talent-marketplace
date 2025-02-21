@@ -22,11 +22,14 @@ export default function ViewMoreButton({ talent }: { talent: Talent }) {
     seniority,
     skills,
     pastRoles,
+    headshotUrl,
   } = talent;
 
   function closeModal() {
     setIsModalOpen(false);
   }
+
+  const formattedName = formatName(firstName, lastName);
 
   return (
     <>
@@ -36,11 +39,26 @@ export default function ViewMoreButton({ talent }: { talent: Talent }) {
       >
         View More
       </button>
-      <Modal
-        open={isModalOpen}
-        onClose={closeModal}
-        title={formatName(firstName, lastName)}
-      >
+      <Modal open={isModalOpen} onClose={closeModal} title={formattedName}>
+        <div className='w-full h-48 bg-gray-100 mb-4 rounded-sm'>
+          {headshotUrl ? (
+            <img
+              src={headshotUrl}
+              alt={`${formattedName}'s headshot`}
+              className='w-full h-full object-contain'
+            />
+          ) : (
+            <div className='w-full h-full flex items-center justify-center'>
+              <svg
+                className='w-20 h-20 text-gray-300'
+                fill='currentColor'
+                viewBox='0 0 24 24'
+              >
+                <path d='M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z' />
+              </svg>
+            </div>
+          )}
+        </div>
         <div className='flex flex-col items-start gap-3'>
           <div className='flex items-center gap-2'>
             <BriefcaseIcon className='h-5 w-5 text-gray-500' />
