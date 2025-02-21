@@ -1,1 +1,1 @@
-export const numberOfSkillsToShow = 3;
+export const numberOfSkillsToShow = 2;

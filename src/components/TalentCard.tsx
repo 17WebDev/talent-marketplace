@@ -42,7 +42,9 @@ export default function TalentCard({ talent }: TalentCardProps) {
           {talent.yearsOfExperience}{' '}
           {talent.yearsOfExperience === 1 ? 'year' : 'years'} of experience
         </p>
-        <PillSection title='Top Skills'>
+        <PillSection
+          title={`Top ${numberOfSkillsToShow} Programming Languages`}
+        >
           {talent.skills.slice(0, numberOfSkillsToShow).map((skill) => (
             <span
               key={skill}
@@ -54,7 +56,7 @@ export default function TalentCard({ talent }: TalentCardProps) {
         </PillSection>
         {talent.pastCompanies && talent.pastCompanies.length > 0 && (
           <PillSection title='Past Companies'>
-            {talent.pastCompanies.slice(0, 3).map((company) => (
+            {talent.pastCompanies.map((company) => (
               <span
                 key={company}
                 className='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800'
