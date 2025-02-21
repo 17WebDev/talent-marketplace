@@ -45,27 +45,37 @@ export default function TalentCard({ talent }: TalentCardProps) {
         <PillSection
           title={`Top ${numberOfSkillsToShow} Programming Languages`}
         >
-          {talent.skills.slice(0, numberOfSkillsToShow).map((skill) => (
-            <span
-              key={skill}
-              className='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800'
-            >
-              {skill}
-            </span>
-          ))}
+          {talent.skills.length > 0 ? (
+            <>
+              {talent.skills.slice(0, numberOfSkillsToShow).map((skill) => (
+                <span
+                  key={skill}
+                  className='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800'
+                >
+                  {skill}
+                </span>
+              ))}
+            </>
+          ) : (
+            <p className='text-sm text-gray-600'>--</p>
+          )}
         </PillSection>
-        {talent.pastCompanies && talent.pastCompanies.length > 0 && (
-          <PillSection title='Past Companies'>
-            {talent.pastCompanies.map((company) => (
-              <span
-                key={company}
-                className='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800'
-              >
-                {company}
-              </span>
-            ))}
-          </PillSection>
-        )}
+        <PillSection title='Past Companies'>
+          {talent.pastCompanies.length > 0 ? (
+            <>
+              {talent.pastCompanies.map((company) => (
+                <span
+                  key={company}
+                  className='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800'
+                >
+                  {company}
+                </span>
+              ))}
+            </>
+          ) : (
+            <p className='text-sm text-gray-600'>--</p>
+          )}
+        </PillSection>
         <div className='flex-1 flex items-end'>
           <ViewMoreButton talent={talent} />
         </div>
