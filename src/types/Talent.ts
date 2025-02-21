@@ -18,4 +18,5 @@ export interface Talent {
   skills: TechStack[];
   pastCompanies: string[];
   status: string | undefined;
+  headshotUrl: string | undefined;
 }
