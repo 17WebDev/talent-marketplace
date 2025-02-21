@@ -53,7 +53,7 @@ export default function TalentGrid({ hasAccess }: ITalentGrid) {
         setSelectedRoles={setSelectedRoles}
         hasAccess={hasAccess}
       />
-      <div className='flex-1'>
+      <div className='flex-1 relative'>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
           {loading ? (
             <>
@@ -61,12 +61,16 @@ export default function TalentGrid({ hasAccess }: ITalentGrid) {
                 <TalentCardSkeleton key={index} />
               ))}
             </>
-          ) : (
+          ) : filteredTalents.length > 0 ? (
             <>
               {filteredTalents.map((t) => (
                 <TalentCard key={t.id} talent={t} />
               ))}
             </>
+          ) : (
+            <p className='absolute left-1/2 top-10 -translate-x-1/2 text-gray-600'>
+              There are no candidates to display with the given criteria.
+            </p>
           )}
         </div>
       </div>
