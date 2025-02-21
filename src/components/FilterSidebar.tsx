@@ -11,6 +11,7 @@ interface IFilterSidebar {
   setSelectedTechStack: React.Dispatch<React.SetStateAction<TechStack[]>>;
   selectedRoles: Role[];
   setSelectedRoles: React.Dispatch<React.SetStateAction<Role[]>>;
+  hasAccess: boolean;
 }
 
 export default function FilterSidebar({
@@ -18,6 +19,7 @@ export default function FilterSidebar({
   setSelectedTechStack,
   selectedRoles,
   setSelectedRoles,
+  hasAccess,
 }: IFilterSidebar) {
   const handleRoleChange = (role: Role) => {
     setSelectedRoles((prev) => {
@@ -45,7 +47,7 @@ export default function FilterSidebar({
       : techStack;
 
   return (
-    <div className={`w-64 shrink-0 block`}>
+    <div className='w-64 shrink-0 block'>
       <div className='bg-white p-6 rounded-lg shadow-xs space-y-4'>
         <h2 className='text-lg font-semibold'>Filters</h2>
         <div className='space-y-6'>
@@ -63,20 +65,22 @@ export default function FilterSidebar({
               </Checkbox>
             ))}
           </Section>
-          <Section title='Tech Stack'>
-            {filteredTechStack.map((tech) => (
-              <Checkbox
-                key={tech}
-                id={`tech-${tech}`}
-                name={`tech-${tech}`}
-                checked={selectedTechStack.includes(tech)}
-                onChange={() => handleTechStackChange(tech)}
-                size='sm'
-              >
-                {tech}
-              </Checkbox>
-            ))}
-          </Section>
+          {hasAccess && (
+            <Section title='Tech Stack'>
+              {filteredTechStack.map((tech) => (
+                <Checkbox
+                  key={tech}
+                  id={`tech-${tech}`}
+                  name={`tech-${tech}`}
+                  checked={selectedTechStack.includes(tech)}
+                  onChange={() => handleTechStackChange(tech)}
+                  size='sm'
+                >
+                  {tech}
+                </Checkbox>
+              ))}
+            </Section>
+          )}
         </div>
       </div>
     </div>

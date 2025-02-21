@@ -51,8 +51,8 @@ export default function TalentGrid({ hasAccess }: ITalentGrid) {
         setSelectedTechStack={setSelectedTechStack}
         selectedRoles={selectedRoles}
         setSelectedRoles={setSelectedRoles}
+        hasAccess={hasAccess}
       />
-
       <div className='flex-1'>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
           {loading ? (
