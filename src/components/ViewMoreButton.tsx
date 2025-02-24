@@ -10,6 +10,7 @@ import {
   ClockIcon,
   MapPinIcon,
 } from '@heroicons/react/24/outline';
+import ModalStat, { IModalStat } from './ModalStat';
 
 export default function ViewMoreButton({ talent }: { talent: Talent }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,6 +31,29 @@ export default function ViewMoreButton({ talent }: { talent: Talent }) {
   }
 
   const formattedName = formatName(firstName, lastName);
+
+  const stats: IModalStat[] = [
+    {
+      text: role ? `${getSeniorityPrefix(seniority)} ${role}` : '--',
+      icon: BriefcaseIcon,
+    },
+    {
+      text: yearsOfExperience
+        ? `${yearsOfExperience} ${
+            yearsOfExperience === 1 ? 'year' : 'years'
+          } of experience`
+        : '--',
+      icon: ClockIcon,
+    },
+    {
+      text: talent.location ?? '--',
+      icon: MapPinIcon,
+    },
+    {
+      text: talent.description ?? '--',
+      icon: ChatBubbleBottomCenterTextIcon,
+    },
+  ];
 
   return (
     <>
@@ -60,32 +84,9 @@ export default function ViewMoreButton({ talent }: { talent: Talent }) {
           )}
         </div>
         <div className='flex flex-col items-start gap-3'>
-          <div className='flex items-center gap-2'>
-            <BriefcaseIcon className='h-5 w-5 text-gray-500' />
-            <p className='text-sm text-gray-600'>
-              {getSeniorityPrefix(seniority)} {role}
-            </p>
-          </div>
-          <div className='flex items-center gap-2'>
-            <ClockIcon className='h-5 w-5 text-gray-500' />
-            <p className='text-sm text-gray-600'>
-              {yearsOfExperience
-                ? `${yearsOfExperience} ${
-                    yearsOfExperience === 1 ? 'year' : 'years'
-                  } of experience`
-                : '--'}
-            </p>
-          </div>
-          <div className='flex items-center gap-2'>
-            <MapPinIcon className='h-5 w-5 text-gray-500 ' />
-            <p className='text-sm text-gray-600'>{talent.location ?? '--'}</p>
-          </div>
-          <div className='flex items-center gap-2'>
-            <ChatBubbleBottomCenterTextIcon className='h-5 w-5 text-gray-500' />
-            <p className='text-sm text-gray-600 text-left'>
-              {talent.description ?? '--'}
-            </p>
-          </div>
+          {stats.map((stat, index) => (
+            <ModalStat key={index} icon={stat.icon} text={stat.text} />
+          ))}
           <PillSection title='Top 1-5 most notable past roles'>
             {pastRoles.length > 0 ? (
               <>
