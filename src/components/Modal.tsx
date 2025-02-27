@@ -46,7 +46,7 @@ export default function Modal({
               leaveFrom='opacity-100 translate-y-0 sm:scale-100'
               leaveTo='opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'
             >
-              <DialogPanel className='relative bg-white rounded-lg p-8 max-w-xl w-full'>
+              <DialogPanel className='relative bg-white rounded-lg p-8 max-w-xl w-full sm:my-6'>
                 <XMarkIcon
                   className='absolute right-6 top-6 h-5 w-5 cursor-pointer hover:text-gray-500 transition-colors'
                   onClick={onClose}
