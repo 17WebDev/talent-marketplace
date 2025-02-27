@@ -13,7 +13,7 @@ export default function LeadForm({ open, onSubmit, onClose }: LeadFormProps) {
     firstName: '',
     lastName: '',
     email: '',
-    companyUrl: '',
+    companyUrl: 'https://',
     typeOfTalentInfo: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
