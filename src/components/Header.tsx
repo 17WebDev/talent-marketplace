@@ -11,7 +11,7 @@ export default function Header({
         <div className='flex justify-between h-16'>
           <div className='flex items-center'>
             <span className='text-indigo-600 text-xl font-bold'>
-              OST Integrated Roles
+              Talent Marketplace
             </span>
           </div>
           {!hasAccess && (
