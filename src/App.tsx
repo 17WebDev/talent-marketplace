@@ -20,26 +20,11 @@ export default function App() {
   };
 
   return (
-    <div
-      className={cn(
-        ' bg-gray-50 overflow-hidden',
-        !hasAccess ? 'h-screen' : 'min-h-screen'
-      )}
-    >
+    <div className={cn('bg-gray-50 overflow-hidden min-h-screen')}>
       <Header setShowForm={setShowForm} hasAccess={hasAccess} />
       <HeroSection />
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative'>
-        <TalentGrid hasAccess={hasAccess} />
-        {!hasAccess && (
-          <div className='absolute inset-0 flex items-center justify-center'>
-            <button
-              onClick={() => setShowForm(true)}
-              className='bg-indigo-600 cursor-pointer text-white px-6 py-3 rounded-md text-lg hover:bg-indigo-700 z-10'
-            >
-              Explore Talent Pool
-            </button>
-          </div>
-        )}
+        <TalentGrid hasAccess={hasAccess} openForm={() => setShowForm(true)} />
         <LeadForm
           open={showForm}
           onSubmit={handleFormSubmit}

@@ -9,12 +9,14 @@ import toast from 'react-hot-toast';
 import formatTalents from '../helpers/formatTalents';
 import airtableService from '../services/airtable.service';
 import TalentCardSkeleton from './skeletons/TalentCardSkeleton';
+import { cn } from '../helpers/cn';
 
 interface ITalentGrid {
   hasAccess: boolean;
+  openForm: () => void;
 }
 
-export default function TalentGrid({ hasAccess }: ITalentGrid) {
+export default function TalentGrid({ hasAccess, openForm }: ITalentGrid) {
   const [selectedTechStack, setSelectedTechStack] = useState<TechStack[]>([]);
   const [selectedRoles, setSelectedRoles] = useState<Role[]>([]);
 
@@ -45,7 +47,7 @@ export default function TalentGrid({ hasAccess }: ITalentGrid) {
   );
 
   return (
-    <div className={`flex gap-8 ${!hasAccess ? 'filter blur-xs' : ''}`}>
+    <div className='flex gap-8'>
       <FilterSidebar
         selectedTechStack={selectedTechStack}
         setSelectedTechStack={setSelectedTechStack}
@@ -54,7 +56,22 @@ export default function TalentGrid({ hasAccess }: ITalentGrid) {
         hasAccess={hasAccess}
       />
       <div className='flex-1 relative'>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+        {!hasAccess && (
+          <div className='absolute inset-0 flex items-center justify-center'>
+            <button
+              onClick={openForm}
+              className='bg-indigo-600 cursor-pointer text-white px-6 py-3 rounded-md text-lg hover:bg-indigo-700 z-10'
+            >
+              Explore Talent Pool
+            </button>
+          </div>
+        )}
+        <div
+          className={cn(
+            'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6',
+            !hasAccess && 'filter blur-xs'
+          )}
+        >
           {loading ? (
             <>
               {Array.from({ length: 6 }).map((_, index) => (

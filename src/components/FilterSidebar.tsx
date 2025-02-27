@@ -4,6 +4,7 @@ import {
   techStack,
   techStackByRole,
 } from '../enums/tech-stack.enum';
+import { cn } from '../helpers/cn';
 import Checkbox from './inputs/Checkbox';
 
 interface IFilterSidebar {
@@ -47,7 +48,9 @@ export default function FilterSidebar({
       : techStack;
 
   return (
-    <div className='w-64 shrink-0 block'>
+    <div
+      className={cn('w-64 shrink-0 block', !hasAccess && 'pointer-events-none')}
+    >
       <div className='bg-white p-6 rounded-lg shadow-xs space-y-4'>
         <h2 className='text-lg font-semibold'>Filters</h2>
         <div className='space-y-6'>
