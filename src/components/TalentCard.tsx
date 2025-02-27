@@ -42,6 +42,9 @@ export default function TalentCard({ talent }: TalentCardProps) {
           {talent.yearsOfExperience}{' '}
           {talent.yearsOfExperience === 1 ? 'year' : 'years'} of experience
         </p>
+        <p className='text-sm text-gray-500 mt-1'>
+          {talent.vetted ? 'Vetted' : 'Not vetted'}
+        </p>
         <PillSection
           title={`Top ${numberOfSkillsToShow} Programming Languages`}
         >

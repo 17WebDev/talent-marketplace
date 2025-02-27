@@ -19,6 +19,7 @@ interface ITalentGrid {
 export default function TalentGrid({ hasAccess, openForm }: ITalentGrid) {
   const [selectedTechStack, setSelectedTechStack] = useState<TechStack[]>([]);
   const [selectedRoles, setSelectedRoles] = useState<Role[]>([]);
+  const [showAllTalent, setShowAllTalent] = useState(false);
 
   const [talents, setTalents] = useState<Talent[]>([]);
   const [loading, setLoading] = useState(false);
@@ -43,7 +44,8 @@ export default function TalentGrid({ hasAccess, openForm }: ITalentGrid) {
   const filteredTalents = filterTalents(
     talents,
     selectedTechStack,
-    selectedRoles
+    selectedRoles,
+    showAllTalent
   );
 
   return (
@@ -54,6 +56,8 @@ export default function TalentGrid({ hasAccess, openForm }: ITalentGrid) {
         selectedRoles={selectedRoles}
         setSelectedRoles={setSelectedRoles}
         hasAccess={hasAccess}
+        showAllTalent={showAllTalent}
+        setShowAllTalent={setShowAllTalent}
       />
       <div className='flex-1 relative'>
         {!hasAccess && (

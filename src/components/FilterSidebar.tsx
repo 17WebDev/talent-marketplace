@@ -12,6 +12,8 @@ interface IFilterSidebar {
   setSelectedTechStack: React.Dispatch<React.SetStateAction<TechStack[]>>;
   selectedRoles: Role[];
   setSelectedRoles: React.Dispatch<React.SetStateAction<Role[]>>;
+  showAllTalent: boolean;
+  setShowAllTalent: React.Dispatch<React.SetStateAction<boolean>>;
   hasAccess: boolean;
 }
 
@@ -20,6 +22,8 @@ export default function FilterSidebar({
   setSelectedTechStack,
   selectedRoles,
   setSelectedRoles,
+  showAllTalent,
+  setShowAllTalent,
   hasAccess,
 }: IFilterSidebar) {
   const handleRoleChange = (role: Role) => {
@@ -38,6 +42,10 @@ export default function FilterSidebar({
       }
       return [...prev, tech];
     });
+  };
+
+  const handleVettedChange = () => {
+    setShowAllTalent((prev) => !prev);
   };
 
   const filteredTechStack =
@@ -82,6 +90,24 @@ export default function FilterSidebar({
                   {tech}
                 </Checkbox>
               ))}
+            </Section>
+          )}
+          {hasAccess && (
+            <Section title='Vetted'>
+              <Checkbox
+                checked={!showAllTalent}
+                onChange={() => handleVettedChange()}
+                size='sm'
+              >
+                Only vetted talent
+              </Checkbox>
+              <Checkbox
+                checked={showAllTalent}
+                onChange={() => handleVettedChange()}
+                size='sm'
+              >
+                Show all talent
+              </Checkbox>
             </Section>
           )}
         </div>

@@ -31,6 +31,7 @@ export default function formatTalents(records: Records<FieldSet>): Talent[] {
       location: fields.Location as string,
       description: fields.Description as string,
       pastRoles: (fields['Top 1-5 most notable past roles'] as string[]) ?? [],
+      vetted: !!fields.Vetted,
     } satisfies Talent;
   });
 

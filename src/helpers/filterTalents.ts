@@ -5,7 +5,8 @@ import { Talent } from '../types/Talent';
 export default function filterTalents(
   talents: Talent[],
   techStack: TechStack[],
-  roles: Role[]
+  roles: Role[],
+  showAllTalent: boolean
 ): Talent[] {
   const filteredTalents = talents
     .filter((talent) => talent.firstName && talent.role)
@@ -22,7 +23,8 @@ export default function filterTalents(
         techStack.every((tech) => talent.skills.includes(tech));
 
       return matchesRole && matchesTechStack;
-    });
+    })
+    .filter((talent) => showAllTalent || talent.vetted);
 
   return filteredTalents;
 }

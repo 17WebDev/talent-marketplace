@@ -23,4 +23,5 @@ export interface Talent {
   location: string | undefined;
   description: string | undefined;
   pastRoles: string[];
+  vetted: boolean;
 }
