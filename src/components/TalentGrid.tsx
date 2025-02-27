@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { Role } from '../enums/roles.enum';
 import { TechStack } from '../enums/tech-stack.enum';
 import filterTalents from '../helpers/filterTalents';
@@ -24,7 +24,7 @@ export default function TalentGrid({ hasAccess, openForm }: ITalentGrid) {
   const [talents, setTalents] = useState<Talent[]>([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const fetchTalent = async () => {
       setLoading(true);
       try {
