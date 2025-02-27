@@ -137,9 +137,8 @@ export default function ViewMoreButton({ talent }: { talent: Talent }) {
           </PillSection>
         </div>
         <div className='flex'>
-          {/* Replace with calendly link */}
           <a
-            href='#'
+            href='https://calendly.com/james-oneseven/talent-marketplace-discovery'
             target='_blank'
             rel='noopener noreferrer'
             className='mt-5 w-full cursor-pointer bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors'
