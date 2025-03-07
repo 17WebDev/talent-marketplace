@@ -143,7 +143,7 @@ export default function ViewMoreButton({ talent }: { talent: Talent }) {
             rel='noopener noreferrer'
             className='mt-5 w-full cursor-pointer bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors'
           >
-            Book a meeting with CEO
+            Book a meeting with us
           </a>
         </div>
       </Modal>
