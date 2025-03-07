@@ -49,7 +49,7 @@ export default function TalentGrid({ hasAccess, openForm }: ITalentGrid) {
   );
 
   return (
-    <div className='flex gap-8'>
+    <div className='flex gap-8 max-[540px]:flex-col'>
       <FilterSidebar
         selectedTechStack={selectedTechStack}
         setSelectedTechStack={setSelectedTechStack}

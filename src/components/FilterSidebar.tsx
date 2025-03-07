@@ -57,7 +57,10 @@ export default function FilterSidebar({
 
   return (
     <div
-      className={cn('w-64 shrink-0 block', !hasAccess && 'pointer-events-none')}
+      className={cn(
+        'min-[540px]:w-64 shrink-0 block',
+        !hasAccess && 'pointer-events-none'
+      )}
     >
       <div className='bg-white p-6 rounded-lg shadow-xs space-y-4'>
         <h2 className='text-lg font-semibold'>Filters</h2>
