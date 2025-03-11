@@ -65,20 +65,6 @@ export default function FilterSidebar({
       <div className='bg-white p-6 rounded-lg shadow-xs space-y-4'>
         <h2 className='text-lg font-semibold'>Filters</h2>
         <div className='space-y-6'>
-          <Section title='Role'>
-            {roles.map((role) => (
-              <Checkbox
-                key={role}
-                id={`role-${role}`}
-                name={`role-${role}`}
-                checked={selectedRoles.includes(role)}
-                onChange={() => handleRoleChange(role)}
-                size='sm'
-              >
-                {role}
-              </Checkbox>
-            ))}
-          </Section>
           {hasAccess && (
             <Section title='Vetted'>
               <Checkbox
@@ -97,6 +83,20 @@ export default function FilterSidebar({
               </Checkbox>
             </Section>
           )}
+          <Section title='Role'>
+            {roles.map((role) => (
+              <Checkbox
+                key={role}
+                id={`role-${role}`}
+                name={`role-${role}`}
+                checked={selectedRoles.includes(role)}
+                onChange={() => handleRoleChange(role)}
+                size='sm'
+              >
+                {role}
+              </Checkbox>
+            ))}
+          </Section>
           {hasAccess && (
             <Section title='Tech Stack'>
               {filteredTechStack.map((tech) => (
