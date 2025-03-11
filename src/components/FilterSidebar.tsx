@@ -80,22 +80,6 @@ export default function FilterSidebar({
             ))}
           </Section>
           {hasAccess && (
-            <Section title='Tech Stack'>
-              {filteredTechStack.map((tech) => (
-                <Checkbox
-                  key={tech}
-                  id={`tech-${tech}`}
-                  name={`tech-${tech}`}
-                  checked={selectedTechStack.includes(tech)}
-                  onChange={() => handleTechStackChange(tech)}
-                  size='sm'
-                >
-                  {tech}
-                </Checkbox>
-              ))}
-            </Section>
-          )}
-          {hasAccess && (
             <Section title='Vetted'>
               <Checkbox
                 checked={!showAllTalent}
@@ -111,6 +95,22 @@ export default function FilterSidebar({
               >
                 Show all talent
               </Checkbox>
+            </Section>
+          )}
+          {hasAccess && (
+            <Section title='Tech Stack'>
+              {filteredTechStack.map((tech) => (
+                <Checkbox
+                  key={tech}
+                  id={`tech-${tech}`}
+                  name={`tech-${tech}`}
+                  checked={selectedTechStack.includes(tech)}
+                  onChange={() => handleTechStackChange(tech)}
+                  size='sm'
+                >
+                  {tech}
+                </Checkbox>
+              ))}
             </Section>
           )}
         </div>
