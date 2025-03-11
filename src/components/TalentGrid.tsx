@@ -19,7 +19,7 @@ interface ITalentGrid {
 export default function TalentGrid({ hasAccess, openForm }: ITalentGrid) {
   const [selectedTechStack, setSelectedTechStack] = useState<TechStack[]>([]);
   const [selectedRoles, setSelectedRoles] = useState<Role[]>([]);
-  const [showAllTalent, setShowAllTalent] = useState(false);
+  const [showAllTalent, setShowAllTalent] = useState(true);
 
   const [talents, setTalents] = useState<Talent[]>([]);
   const [loading, setLoading] = useState(false);
